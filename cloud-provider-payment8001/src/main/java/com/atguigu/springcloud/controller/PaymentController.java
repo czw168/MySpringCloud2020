@@ -11,6 +11,7 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -27,12 +28,12 @@ public class PaymentController {
     private String serverPort;
 
     @PostMapping(value = "payment/create")
-    public CommonResult create(@RequestBody Payment payment) {
+    public CommonResult<Payment> create(@RequestBody Payment payment) {
         return paymentService.create(payment);
     }
 
     @GetMapping(value = "payment/get/{id}")
-    public CommonResult getPaymentById(@PathVariable("id") Long id) {
+    public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         return paymentService.getPaymentById(id);
     }
 
@@ -63,6 +64,21 @@ public class PaymentController {
         return serverPort;
     }
 
+
+    /**
+     * 模拟业务超时方法
+     */
+    @GetMapping("payment/timeOut")
+    public String timeOut(){
+
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        return serverPort;
+    }
 
 
 }

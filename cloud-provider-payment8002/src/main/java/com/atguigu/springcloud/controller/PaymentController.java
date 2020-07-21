@@ -27,12 +27,12 @@ public class PaymentController {
     private String serverPort;
 
     @PostMapping(value = "payment/create")
-    public CommonResult create(@RequestBody Payment payment) {
+    public CommonResult<Payment> create(@RequestBody Payment payment) {
         return paymentService.create(payment);
     }
 
     @GetMapping(value = "payment/get/{id}")
-    public CommonResult getPaymentById(@PathVariable("id") Long id) {
+    public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         return paymentService.getPaymentById(id);
     }
 

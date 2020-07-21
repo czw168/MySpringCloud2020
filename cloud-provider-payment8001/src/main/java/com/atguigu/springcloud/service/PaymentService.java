@@ -5,7 +5,7 @@ import com.atguigu.springcloud.entities.Payment;
 import org.apache.ibatis.annotations.Param;
 
 public interface PaymentService {
-    public CommonResult create(Payment payment);
+    CommonResult<Payment> create(Payment payment);
 
-    public CommonResult getPaymentById(@Param("id")Long id);
+    CommonResult<Payment> getPaymentById(@Param("id")Long id);
 }

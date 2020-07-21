@@ -21,7 +21,7 @@ public class PaymentServiceImpl implements PaymentService {
     private String serverPort;
 
     @Override
-    public CommonResult create(Payment payment) {
+    public CommonResult<Payment> create(Payment payment) {
         int result = paymentDao.create(payment);
         log.info("*****插入结果: " + result);
         if (result > 0) {
@@ -31,7 +31,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public CommonResult getPaymentById(Long id) {
+    public CommonResult<Payment> getPaymentById(Long id) {
         Payment payment = paymentDao.getPaymentById(id);
         log.info("*****查询结果: " + payment);
         if (payment != null) {
