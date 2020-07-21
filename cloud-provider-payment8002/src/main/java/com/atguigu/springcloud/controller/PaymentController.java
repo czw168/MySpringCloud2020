@@ -5,6 +5,7 @@ import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,9 @@ public class PaymentController {
     // euerka发现服务
     @Autowired
     private DiscoveryClient discoveryClient;
+
+    @Value("${server.port}")
+    private String serverPort;
 
     @PostMapping(value = "payment/create")
     public CommonResult create(@RequestBody Payment payment) {
@@ -48,4 +52,13 @@ public class PaymentController {
 
         return this.discoveryClient;
     }
+
+    /**
+     * 返回一个端口号
+     */
+    @GetMapping("payment/getPort")
+    public String getPort(){
+        return serverPort;
+    }
+
 }
