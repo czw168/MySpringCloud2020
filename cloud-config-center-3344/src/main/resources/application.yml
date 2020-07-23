@@ -1,0 +1,37 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-center-3344
+  cloud:
+    config:
+      server:
+        git:
+          # GitHub上面的git仓库名字
+          #uri: git@github.com:czw168/MySpringCloud2020-config.git
+          uri: https://github.com/czw168/MySpringCloud2020-config.git
+          # 搜索的目录
+          search-paths:
+            - MySpringCloud2020-config
+      # 搜索的分分支
+      label: master
+  rabbitmq:
+    host: 192.168.4.97
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+
+
+# rabbitMQ相关配置，暴露bus刷新配置的端点
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"

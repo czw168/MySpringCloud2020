@@ -53,11 +53,11 @@ public class PaymentService {
             throw new RuntimeException("id 不能为负数");
         }
         String uuid = IdUtil.simpleUUID();
-        return Thread.currentThread().getName() + "circuitBreaker \t id = " + id + "\t uuid = " + uuid;
+        return Thread.currentThread().getName() + "\t circuitBreaker \t id = " + id + "\t uuid = " + uuid;
     }
 
     public String circuitBreakerFallBack(Integer id){
-        return Thread.currentThread().getName() + "circuitBreakerFallBack \t id = " + id;
+        return Thread.currentThread().getName() + "\t circuitBreakerFallBack \t id = " + id;
     }
 
 }
