@@ -81,4 +81,13 @@ public class PaymentController {
     }
 
 
+    /**
+     * 链路跟踪
+     * @return
+     */
+    @GetMapping(value = "/payment/zipkin")
+    public String paymentZipkin() {
+        return "hi,i'am paymentZipkin server fall back,welcome to atguigu,O(∩_∩)O哈哈~";
+    }
+
 }

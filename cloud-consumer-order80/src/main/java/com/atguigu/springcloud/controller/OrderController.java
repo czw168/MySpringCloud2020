@@ -56,4 +56,14 @@ public class OrderController {
         return restTemplate.getForObject(uri + "/payment/getPort", String.class);
     }
 
+
+    /**
+     * 链路跟踪 zipkin+sleuth
+     * @return
+     */
+        @GetMapping("/consumer/payment/zipkin")
+    public String paymentZipkin() {
+        return restTemplate.getForObject(PAYMENT_URL + "/payment/zipkin/", String.class);
+    }
+
 }

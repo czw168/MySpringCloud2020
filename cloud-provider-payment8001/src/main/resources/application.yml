@@ -3,6 +3,12 @@ server:
 spring:
   application:
     name: cloud-payment-service
+  zipkin:
+    base-url: http://192.168.4.97:9411
+  sleuth:
+    sampler:
+      # 采样率介于0~1之间，1表示全部采集
+      probability: 1
   datasource:
     # 当前数据源操作类型
     type: com.alibaba.druid.pool.DruidDataSource
